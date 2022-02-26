@@ -1,0 +1,18 @@
+.Welcome{
+    background-image: url("https://img2.thuthuatphanmem.vn/uploads/2018/12/30/background-dep-ppt_110341618.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.Newpost{
+    padding: 5px;
+    margin: 30px;
+}
+
+#userpost{
+    margin: 30px;
+}
