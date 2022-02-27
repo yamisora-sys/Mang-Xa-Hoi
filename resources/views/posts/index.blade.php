@@ -3,6 +3,7 @@
 @section('content')
 
 <div id="index">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <div class="Welcome">
         <h1>Welcome to Void Forum</h1>
         <p>
@@ -11,27 +12,37 @@
         <p>
             You can create a new post or view all the posts.
         </p>
-    </div>
-        <div id="userpost" class="mt-12 grid max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
+    </div id="userpost">
+        <div class="container blog-page">
         @foreach ($posts as $post)
-            <div class="flex-1 flex-col rounded-lg shadow-lg overflow-hidden">
-                <div class="flex-1 p-6 flex-col justify-between">
-                    <div class="flex-1">
-                        <div class="flex-1">
-                            <a href="/viewpost/{{$post->id}}">
-                                <h3 class="mt-2 text-x1 leading-7 font-semibold text-gray-900">{{$post->title}}</h3>
-                            </a>
-                            <p class="mt-3 text-base leading-6 text-gray-500">
-                            @if (strlen($post->text) > 200)
-                                {{ substr($post->text, 0, 200) }}...
-                            @else
-                                {{ $post->text }}
-                            @endif
-                        </p>
+        <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+            <div class="card single_post">
+                <div class="header">
+                    <h4><strong>Latest</strong> Post</h4>
+                </div>
+                <div class="body">
+                    <h3 class="m-t-0 m-b-5"><a href="blog-details.html">{{$post->title}}</a></h3>
+                    <ul class="meta">
+                        <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By: John Smith</a></li>
+                        <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>{{$post->tag}}</a></li>
+                        <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="img-post m-b-15">
+                        <img src="https://tophinhanhdep.com/wp-content/uploads/2021/10/Cute-Kitty-Wallpapers.jpg" alt="Awesome Image">
+                        <div class="social_share">
+                            <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-facebook"></i></button>
+                            <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-twitter"></i></button>
+                            <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-instagram"></i></button>
                         </div>
                     </div>
+                    <p class="overflow-hidden" style="height:30px;">{{$post->body}}</p>
+                    <a href="/viewpost/{{$post->id}}" title="read more" class="btn btn-round btn-info">Read More</a>
                 </div>
             </div>
+        </div>
         @endforeach
         </div> 
 </div>

@@ -11,18 +11,18 @@
                         <div class="form-group">
                             @csrf
                             <label class="label">Title: </label>
-                            <input type=text name=title class="form-control" value="{{old('title')}}" required/>
+                            <input type=text name=title class="form-control" value="{{old('title')}}" placeholder="Nhập tiêu đề" required/>
                         </div>
                          <div class="form-group">
                             <label class="label">Tag: </label>
-                            <input name=tag class="form-control" value="{{old('tag')}}" required/>
+                            <input name=tag class="form-control" value="{{old('tag')}}" placeholder="Các tag cách nhau bằng dấu phẩy. Vd: Thông Báo, Cập Nhật" required/>
                         </div>
 
                         <div class="form-group">
                             <label class="label">Body: </label>
-                            <textarea name=body rows="10" cols="30" class="form-control" required>{{ old('body') }}</textarea>
+                            <textarea name=body rows="10" cols="30" class="form-control" placeholder="Nhập nội dung bài đăng" required>{{ old('body') }}</textarea>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group dd">
                             <input type=submit class="btn btn-success" />
                         </div>
                     </form>
