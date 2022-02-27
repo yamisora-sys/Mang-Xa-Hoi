@@ -33,6 +33,6 @@ Route::get('/viewpost/{post}', [App\Http\Controllers\PostController::class, 'sho
 Route::post('/postcomment', [App\Http\Controllers\CommentsController::class, 'store'])->name('comment.store');
 
 //facebook login
-Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
-Route::get('/callback/{provider}', 'SocialController@callback');
+Route::get('/auth/redirect/{provider}', [App\Http\Controllers\SocialController::class, 'redirect'])->name('social.redirect');
+Route::get('/callback/{provider}', [App\Http\Controllers\SocialController::class, 'callback'])->name('social.callback');
 
