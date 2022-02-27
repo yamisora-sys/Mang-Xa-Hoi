@@ -13,16 +13,17 @@
             You can create a new post or view all the posts.
         </p>
     </div id="userpost">
-        <div class="container blog-page">
+        <div class="container blog-page grid">
+            <div class="row clearfix">
         @foreach ($posts as $post)
-        <div class="row clearfix">
+        
         <div class="col-lg-4 col-md-12">
             <div class="card single_post">
-                <div class="header">
-                    <h4><strong>Latest</strong> Post</h4>
-                </div>
                 <div class="body">
-                    <h3 class="m-t-0 m-b-5"><a href="blog-details.html">{{$post->title}}</a></h3>
+                    <div>
+                        <h3 class="m-t-0 m-b-5">{{$post->title}}</h3>
+                        <div class="text-muted small">{{date('d/m/y H:i', strtotime($post->created_at))}}</div>
+                    </div>
                     <ul class="meta">
                         <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By: John Smith</a></li>
                         <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>{{$post->tag}}</a></li>
