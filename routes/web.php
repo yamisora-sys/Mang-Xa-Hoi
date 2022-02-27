@@ -32,3 +32,7 @@ Route::post('/store', [App\Http\Controllers\PostController::class, 'store'])->na
 Route::get('/viewpost/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
 Route::post('/postcomment', [App\Http\Controllers\CommentsController::class, 'store'])->name('comment.store');
 
+//facebook login
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');
+
