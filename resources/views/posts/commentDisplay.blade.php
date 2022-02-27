@@ -1,7 +1,7 @@
 <link href="{{ asset('css/cmt.css')}}" rel="stylesheet">
 
 @foreach($comments as $comment)
-    <div class="display-comment">
+    <div class="display-comment" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
         <strong>{{ $comment->user->name }}</strong>
         <p>{{ $comment->body }}</p>
         <a href="" id="reply"></a>
@@ -16,5 +16,6 @@
                 <input type=submit class="btn btn-warning" value="Reply" />
             </div>
         </form>
+        @include('posts.commentDisplay', ['comments' => $comment->replies])
     </div>
 @endforeach
