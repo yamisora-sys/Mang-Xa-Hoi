@@ -11,7 +11,11 @@ class Post extends Model
     protected $date = ['deleted_at'];
 
 
-    protected $fillable =['title','tag' ,'body'];
+    protected $fillable =['title','tag','user_id' ,'body'];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function comments(){
         return $this->hasMany(Comment::class)->whereNull('parent_id');

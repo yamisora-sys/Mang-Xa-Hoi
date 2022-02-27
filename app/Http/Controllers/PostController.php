@@ -29,11 +29,13 @@ class PostController extends Controller
     
         $request->validate([
             'title'=>'required',
-            'tag'=>'required',
+            'tag'=>'required|max:15',
             'body'=>'required',
         ]);
+        $input = $request->all();
+        $input['user_id'] = auth()->user()->id;
     
-        Post::create($request->all());
+        Post::create($input);
 
         return redirect('/forum')->with('success', 'Post created successfully');
     }

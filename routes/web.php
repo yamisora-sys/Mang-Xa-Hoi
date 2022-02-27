@@ -30,4 +30,5 @@ Route::get('/newpost', [App\Http\Controllers\PostController::class, 'create'])->
 Route::post('/store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
 
 Route::get('/viewpost/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
+Route::post('/postcomment', [App\Http\Controllers\CommentsController::class, 'store'])->name('comment.store');
 

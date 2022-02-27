@@ -15,7 +15,7 @@
                         </div>
                          <div class="form-group">
                             <label class="label">Tag: </label>
-                            <input name=tag class="form-control" value="{{old('tag')}}" placeholder="Các tag cách nhau bằng dấu phẩy. Vd: Thông Báo, Cập Nhật" required/>
+                            <input name=tag class="form-control" value="{{old('tag')}}" placeholder="Tối đa 15 ký tự" required/>
                         </div>
 
                         <div class="form-group">
