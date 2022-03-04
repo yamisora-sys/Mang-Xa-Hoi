@@ -36,7 +36,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-<link rel="stylesheet" href="{{asset('css/show.css')}}">
+
+<link rel="stylesheet" href="{{asset('css/show.css')}}"> 
+
 <div class="container mt-5 mb-5">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6">
@@ -46,9 +48,9 @@
                         <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">{{$post->user->name}}</span> <small class="text-primary">Collegues</small> </div>
                     </div>
                     <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div>
-                </div> <img src="https://i.imgur.com/xhzhaGA.jpg" class="img-fluid">
+                </div> <img src="https://image.winudf.com/v2/image/Y29tLndDdXRlQ2F0V2FsbHBhcGVyXzUzMzYwNTJfc2NyZWVuXzBfNGYwNWF3aTM/screen-0.jpg?fakeurl=1&type=.jpg" class="img-fluid">
                 <div class="p-2">
-                    <p class="text-justify">{{$post->body}}</p>
+                    <p class="text-justify cormonrant-garamond">{{$post->body}}</p>
                     <hr>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-row icons d-flex align-items-center"> <i class="fa fa-heart"></i> <i class="fa fa-smile-o ml-2"></i> </div>
@@ -62,7 +64,7 @@
                         @csrf
                         <div class="form-group">
                             <div class="comment-input"> 
-                                <input type="text" class="form-control" name=body placeholder="Add your comment. Enter to add comment">
+                                <input type="text" class="form-control" name=body placeholder="Add your comment. Enter to post comment">
                                 <input type=hidden name=post_id value="{{ $post->id }}" />
                                 <div class="fonts"> <i class="fa fa-paper-plane" aria-hidden="true" type=submit></i> </div>
                             </div>
@@ -74,4 +76,9 @@
         </div>
     </div>
 </div>
+<<style>
+    .cormonrant-garamond {
+        font-family: 'Cormorant Garamond', serif;
+    }
+</style>
 @endsection
