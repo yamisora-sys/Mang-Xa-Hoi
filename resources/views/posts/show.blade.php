@@ -16,7 +16,7 @@
                     <div class="d-flex flex-row align-items-center"> <img src="https://play-lh.googleusercontent.com/ObdbSatQvNUymufVs3vL5YmhGdvs3w5vvTciaGLFQOZoREVAEIIueioFOrWk9je_fqxR" width="50" class="rounded-circle">
                         <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">{{$post->user->name}}</span> <small class="text-primary">{{$post->title}}</small> </div>
                     </div>
-                    <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">20 mins</small> <i class="fa fa-ellipsis-h"></i> </div>
+                    <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">{{date('d/m/y H:i', strtotime($post->created_at))}}</small> <i class="fa fa-ellipsis-h"></i> </div>
                 </div> <img src="https://image.winudf.com/v2/image/Y29tLndDdXRlQ2F0V2FsbHBhcGVyXzUzMzYwNTJfc2NyZWVuXzBfNGYwNWF3aTM/screen-0.jpg?fakeurl=1&type=.jpg" class="img-fluid">
                 <div class="p-2">
                     <p class="cormonrant-garamond">{{$post->body}}</p>
@@ -28,17 +28,23 @@
                     <hr>
                     <!-- commentPost & commentDisplay -->
                     <div class="comments" >
-                    @include('posts.commentDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
-                    <form method="post" action="{{ route('comment.store') }}">
-                        @csrf
-                        <div class="form-group">
-                            <div class="comment-input"> 
-                                <input type="text" class="form-control" name=body placeholder="Add your comment. Enter to post comment">
-                                <input type=hidden name=post_id value="{{ $post->id }}" />
-                                <div class="fonts"> <i class="fa fa-paper-plane" aria-hidden="true" type=submit></i> </div>
+                        @guest
+                            <div class="alert alert-danger">
+                                <strong>You must be logged in to comment!</strong>
                             </div>
-                        </div>
-                        </form>
+                        @else
+                        @include('posts.commentDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
+                        <form method="post" action="{{ route('comment.store') }}">
+                            @csrf
+                            <div class="form-group">
+                                <div class="comment-input"> 
+                                    <input type="text" class="form-control" name=body placeholder="Add your comment. Enter to post comment">
+                                    <input type=hidden name=post_id value="{{ $post->id }}" />
+                                    <div class="fonts"> <i class="fa fa-paper-plane" aria-hidden="true" type=submit></i> </div>
+                                </div>
+                            </div>
+                            </form>
+                        @endguest
                     </div>
                 </div>
             </div>
