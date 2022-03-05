@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+//Model
 use App\Models\Post;
 use App\Models\Comment;
+
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
