@@ -15,19 +15,7 @@
     @include('posts.commentDisplay', ['comments' => $comment->replies])
 @endforeach
 
-<!-- <div id="reply-form">
-    <form method="post" action="{{ route('comment.store') }}" >
-        @csrf
-        <div class="form-group">
-            <div class="comment-input"> 
-                <input type="text" class="form-control" name=body placeholder="Add your comment. Enter to post comment">
-                <input type=hidden name=post_id value="{{ $post->id }}" />
-                <input type=hidden name=parent_id value="{{ $comment->id }}" />
-                <div class="fonts"> <i class="fa fa-paper-plane" aria-hidden="true" type=submit></i> </div>
-            </div>
-        </div>
-    </form>
-    </div> -->
+
 
 <style>
     .cormonrant-garamond {
