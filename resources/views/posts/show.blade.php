@@ -8,6 +8,7 @@
 
 <link rel="stylesheet" href="{{asset('css/show.css')}}"> 
 
+<script src="{{ mix('js/app.js') }}"></script>
 <div class="container mt-5 mb-5">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6">
@@ -21,8 +22,13 @@
                 <div class="p-2">
                     <p class="cormonrant-garamond">{{$post->body}}</p>
                     <hr>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex flex-row icons d-flex align-items-center"> <i class="fa fa-heart" @click.prevent="likeIt"></i><i class="fa fa-smile-o ml-2"></i> </div>
+                    <div class="d-flex justify-content-between align-items-center" id ='app'>
+                        <div class="d-flex flex-row icons d-flex align-items-center">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-smile-o ml-2"></i>
+                            <like-component :post="{{ $post->id }}"></like-component>
+                            <dislike-component :post="{{ $post->id }}"></dislike-component>
+                        </div>
                         <div class="d-flex flex-row muted-color"> <span>{{$post->comments()->get()->count()}} Comments</span> <span class="ml-2">Share</span> </div>
                     </div>
                     <hr>

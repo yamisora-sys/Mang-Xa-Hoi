@@ -41,3 +41,8 @@ Route::prefix('facebook')->name('facebook.')->group( function(){
 
 
 //like
+
+Route::post('/like', [App\Http\Controllers\PostController::class, 'fetchLike'])->name('post.like');
+Route::post('/like/{id}', [App\Http\Controllers\PostController::class, 'handleLike'])->name('postid.like');
+Route::post('/dislike', [App\Http\Controllers\PostController::class, 'fetchDislike'])->name('post.dislike');
+Route::post('/dislike/{id}', [App\Http\Controllers\PostController::class, 'handleDislike'])->name('postid.dislike');

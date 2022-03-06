@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('tag');
             $table->integer('user_id');
+            // $table->string('post_slug');
             $table->text('body');
+            $table->unsignedBigInteger('like')->default(0);
+            $table->unsignedBigInteger('dislike')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

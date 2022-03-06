@@ -13,6 +13,11 @@ class Post extends Model
 
     protected $fillable =['title','tag','user_id' ,'body'];
 
+    // public function getRouteKeyName()
+    // {
+    //     return 'post_slug';
+    // }    
+
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
