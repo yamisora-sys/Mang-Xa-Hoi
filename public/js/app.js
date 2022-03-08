@@ -5430,40 +5430,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['post'],
   data: function data() {
     return {
-      alllikes: ''
+      totalDislike: ''
     };
   },
   methods: {
-    likeBlog: function likeBlog() {
+    disLikePost: function disLikePost() {
       var _this = this;
 
-      axios.post('/like/' + this.post, {
+      axios.post('/dislike/' + this.post, {
         post: this.post
-      }).then(function (res) {
-        _this.renderLike();
+      }).then(function (response) {
+        _this.getDislike();
 
-        $('#success').html(res.data.message);
+        $('#success').html(response.data.message);
       })["catch"]();
     },
-    renderLike: function renderLike() {
+    getDislike: function getDislike() {
       var _this2 = this;
 
-      axios.post('/like', {
+      axios.post('/dislike', {
         post: this.post
-      }).then(function (res) {
-        console.log(res.data.post.like);
-        _this2.alllikes = res.data.post.like;
+      }).then(function (response) {
+        console.log(response.data.post.dislike);
+        _this2.totalDislike = response.data.post.dislike;
       });
     }
   },
   mounted: function mounted() {
-    this.renderLike();
+    this.getDislike();
   }
 });
 
@@ -5493,8 +5491,8 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('like-component', (__webpack_require__(/*! ./components/LikeComponent.vue */ "./resources/js/components/LikeComponent.vue")["default"]));
-Vue.component('dislike-component', (__webpack_require__(/*! ./components/DislikeComponent.vue */ "./resources/js/components/DislikeComponent.vue")["default"]));
+Vue.component('like', (__webpack_require__(/*! ./components/LikeComponent.vue */ "./resources/js/components/LikeComponent.vue")["default"]));
+Vue.component('dislike', (__webpack_require__(/*! ./components/DislikeComponent.vue */ "./resources/js/components/DislikeComponent.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -28165,7 +28163,7 @@ var render = function () {
       },
       [
         _c("i", {
-          staticClass: "fa fa-thumbs-o-down",
+          staticClass: "fa fa-heart",
           attrs: { "aria-hidden": "true" },
         }),
         _vm._v(" \n       (" + _vm._s(_vm.allDislike) + ")\n   "),
@@ -28197,27 +28195,21 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "mb-3", attrs: { id: "success" } }),
+    _c("p", { attrs: { id: "success" } }),
     _vm._v(" "),
-    _c(
-      "a",
-      {
-        staticStyle: { cursor: "pointer" },
+    _c("a", [
+      _c("i", {
+        staticClass: "fa fa-heart",
+        attrs: { "aria-hidden": "true" },
         on: {
           click: function ($event) {
             $event.preventDefault()
-            return _vm.likeBlog.apply(null, arguments)
+            return _vm.disLikePost.apply(null, arguments)
           },
         },
-      },
-      [
-        _c("i", {
-          staticClass: "fa fa-heart",
-          attrs: { "aria-hidden": "true" },
-        }),
-        _vm._v("\n        (" + _vm._s(_vm.alllikes) + ")\n    "),
-      ]
-    ),
+      }),
+      _vm._v("(" + _vm._s(_vm.totalDislike) + ")"),
+    ]),
   ])
 }
 var staticRenderFns = []

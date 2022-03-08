@@ -3,7 +3,7 @@
         <div id="success" class="mb-3"></div>
         
        <a style="cursor: pointer" @click.prevent="dislikeBlog">
-           <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 
+           <i class="fa fa-heart" aria-hidden="true"></i> 
            ({{ allDislike }})
        </a>
     </div>

@@ -41,42 +41,34 @@ class PostController extends Controller
 
         return redirect('/forum')->with('success', 'Post created successfully');
     }
-
-    public function fetchLike(Request $request)
-    {
-        $post = Post::find($request->post);
-        return response()->json([
-            'post' => $post,
-        ]);
-    }
- 
-    public function handleLike(Request $request)
+    
+    public function like(Request $request)
     {
         $post = Post::find($request->post);
         $value = $post->like;
         $post->like = $value+1;
         $post->save();
         return response()->json([
-            'message' => 'Liked',
+            'message'=>'Thanks',
         ]);
     }    
  
-    public function fetchDislike(Request $request)
+    public function getDislike(Request $request)
     {
         $post = Post::find($request->post);
         return response()->json([
-            'post' => $post,
+            'post'=>$post,
         ]);
     }
  
-    public function handleDislike(Request $request)
+    public function dislike(Request $request)
     {
         $post = Post::find($request->post);
         $value = $post->dislike;
         $post->dislike = $value+1;
         $post->save();
         return response()->json([
-            'message' => 'Disliked',
+            'message'=>'Thanks',
         ]);
     }
 }

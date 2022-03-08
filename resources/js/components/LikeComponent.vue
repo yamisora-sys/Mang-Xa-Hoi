@@ -1,43 +1,37 @@
 <template>
     <div class="container">
-        <div id="success" class="mb-3"></div>
-        <a style="cursor: pointer" @click.prevent="likeBlog" >
-            <i class="fa fa-heart" aria-hidden="true"></i>
-            ({{ alllikes }})
-        </a>
+        <p id="success"></p>
+       <a><i @click.prevent="disLikePost" class="fa fa-heart" aria-hidden="true"></i>({{ totalDislike }})</a>
     </div>
 </template>
+ 
 <script>
     export default {
-        props: ['post'],
-        data() {
+        props:['post'],
+        data(){
             return {
-                alllikes: '',
+                totalDislike:'',
             }
         },
-        methods: {
-            likeBlog() {
-                axios.post('/like/' + this.post, {
-                        post: this.post
-                    })
-                    .then(res => {
-                        this.renderLike()
-                        $('#success').html(res.data.message)
-                    })
-                    .catch()
+        methods:{
+            disLikePost(){
+                axios.post('/dislike/'+this.post,{post:this.post})
+                .then(response =>{
+                    this.getDislike()
+                    $('#success').html(response.data.message)
+                })
+                .catch()
             },
-            renderLike() {
-                axios.post('/like', {
-                        post: this.post
-                    })
-                    .then(res => {
-                        console.log(res.data.post.like)
-                        this.alllikes = res.data.post.like
-                    })
+            getDislike(){
+                axios.post('/dislike',{post:this.post})
+                .then(response =>{
+                    console.log(response.data.post.dislike)
+                    this.totalDislike = response.data.post.dislike
+                })
             }
         },
         mounted() {
-            this.renderLike()
+            this.getDislike()
         }
     }
-</script>
+</script> 
