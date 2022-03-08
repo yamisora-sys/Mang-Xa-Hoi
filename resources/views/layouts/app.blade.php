@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Void Forum') }}</title>
 
     <!-- Scripts -->
-    <script type="text/javascript" src="{{ mix('js/app.js') }}" ></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,7 +23,8 @@
 </head>
 <body>
     @include ('layouts.header')
-    <div id="app">
+    <div id="testlike">
+    <like-component :post="1"></like-component>
         <main class="py-4">
             @yield('content')
         </main>

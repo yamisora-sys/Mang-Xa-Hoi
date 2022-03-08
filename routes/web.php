@@ -47,3 +47,4 @@ Route::post('like/{id}', [App\Http\Controllers\PostController::class, 'like']);
  
 Route::post('dislike', [App\Http\Controllers\PostController::class, 'getDislike']);
 Route::post('dislike/{id}', [App\Http\Controllers\PostController::class, 'dislike']);
+

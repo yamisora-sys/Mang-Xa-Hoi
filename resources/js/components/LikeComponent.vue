@@ -1,37 +1,36 @@
 <template>
-    <div class="container">
+    <div>
         <p id="success"></p>
-       <a><i @click.prevent="disLikePost" class="fa fa-heart" aria-hidden="true"></i>({{ totalDislike }})</a>
-    </div>
+       <a href="http://"><i @click.prevent="likePost" class="fa fa-thumbs-up" aria-hidden="true"></i>({{ totallike }})</a>
+    </div> 
 </template>
- 
 <script>
     export default {
         props:['post'],
         data(){
             return {
-                totalDislike:'',
+                totallike:'',
             }
         },
         methods:{
-            disLikePost(){
-                axios.post('/dislike/'+this.post,{post:this.post})
+            likePost(){
+                axios.post('/like/'+this.post,{post:this.post})
                 .then(response =>{
-                    this.getDislike()
+                    this.getlike()
                     $('#success').html(response.data.message)
                 })
                 .catch()
             },
-            getDislike(){
-                axios.post('/dislike',{post:this.post})
+            getlike(){
+                axios.post('/like',{post:this.post})
                 .then(response =>{
-                    console.log(response.data.post.dislike)
-                    this.totalDislike = response.data.post.dislike
+                    console.log(response.data.post.like)
+                    this.totallike = response.data.post.like
                 })
             }
         },
         mounted() {
-            this.getDislike()
+            this.getlike()
         }
     }
 </script> 

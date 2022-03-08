@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="index">
+<div id="index" >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <div class="Welcome">
         <h1>Welcome to Void Forum</h1>
@@ -25,7 +25,7 @@
                         <div class="text-muted small">{{date('d/m/y H:i', strtotime($post->created_at))}}</div>
                     </div>
                     <ul class="meta">
-                        <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By:</a></li>
+                        <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By:{{$post->user->name}}</a></li>
                         <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>{{$post->tag}}</a></li>
                         <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: {{$post->comments()->get()->count()}}</a></li>
                     </ul>

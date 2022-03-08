@@ -19,7 +19,6 @@ class PostController extends Controller
     public function show(Post $post){
         return view('posts.show', [
             'post' => $post,
-            //'comments' => $post->comments()->paginate(5)
         ]);
     }
     //completed
@@ -41,7 +40,14 @@ class PostController extends Controller
 
         return redirect('/forum')->with('success', 'Post created successfully');
     }
-    
+
+    public function getlike(Request $request)
+    {
+        $post = Post::find($request->post);
+        return response()->json([
+            'post'=>$post,
+        ]);
+    }
     public function like(Request $request)
     {
         $post = Post::find($request->post);

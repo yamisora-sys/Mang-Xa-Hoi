@@ -12,7 +12,7 @@
         
     </head>
     <body>
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5" id="app">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -29,8 +29,9 @@
                         <div class="d-flex flex-row icons d-flex align-items-center">
                             <i class="fa fa-heart"></i>
                             <i class="fa fa-smile-o ml-2"></i>
-                            <like :post="{{ $post->id }}"></like>
-                            <dislike :post="{{ $post->id }}"></dislike>
+                            <like-component :post="{{ $post->id }}"></like-component>
+                            <dislike-component :post="{{ $post->id}}"></dislike-component>
+                            
                         </div>
                         <div class="d-flex flex-row muted-color"> <span>{{$post->comments()->get()->count()}} Comments</span> <span class="ml-2">Share</span> </div>
                     </div>

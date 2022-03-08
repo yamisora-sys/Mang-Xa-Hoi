@@ -5370,66 +5370,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['post'],
-  data: function data() {
-    return {
-      allDislike: ''
-    };
-  },
-  methods: {
-    dislikeBlog: function dislikeBlog() {
-      var _this = this;
-
-      axios.post('/dislike/' + this.post, {
-        post: this.post
-      }).then(function (res) {
-        _this.renderDislike();
-
-        $('#success').html(res.data.message);
-      })["catch"]();
-    },
-    renderDislike: function renderDislike() {
-      var _this2 = this;
-
-      axios.post('/dislike', {
-        post: this.post
-      }).then(function (res) {
-        console.log(res.data.post.dislike);
-        _this2.allDislike = res.data.post.dislike;
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.renderDislike();
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/LikeComponent.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/LikeComponent.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['post'],
   data: function data() {
@@ -5467,6 +5407,60 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/LikeComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/LikeComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['post'],
+  data: function data() {
+    return {
+      totallike: ''
+    };
+  },
+  methods: {
+    likePost: function likePost() {
+      var _this = this;
+
+      axios.post('/like/' + this.post, {
+        post: this.post
+      }).then(function (response) {
+        _this.getlike();
+
+        $('#success').html(response.data.message);
+      })["catch"]();
+    },
+    getlike: function getlike() {
+      var _this2 = this;
+
+      axios.post('/like', {
+        post: this.post
+      }).then(function (response) {
+        console.log(response.data.post.like);
+        _this2.totallike = response.data.post.like;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getlike();
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -5491,8 +5485,8 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('like', (__webpack_require__(/*! ./components/LikeComponent.vue */ "./resources/js/components/LikeComponent.vue")["default"]));
-Vue.component('dislike', (__webpack_require__(/*! ./components/DislikeComponent.vue */ "./resources/js/components/DislikeComponent.vue")["default"]));
+Vue.component('like-component', (__webpack_require__(/*! ./components/LikeComponent.vue */ "./resources/js/components/LikeComponent.vue")["default"]));
+Vue.component('dislike-component', (__webpack_require__(/*! ./components/DislikeComponent.vue */ "./resources/js/components/DislikeComponent.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -5500,7 +5494,7 @@ Vue.component('dislike', (__webpack_require__(/*! ./components/DislikeComponent.
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#testlike'
 });
 
 /***/ }),
@@ -28147,28 +28141,22 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "mb-3", attrs: { id: "success" } }),
+  return _c("div", [
+    _c("p", { attrs: { id: "success" } }),
     _vm._v(" "),
-    _c(
-      "a",
-      {
-        staticStyle: { cursor: "pointer" },
+    _c("a", { attrs: { href: "http://" } }, [
+      _c("i", {
+        staticClass: "fa fa-thumbs-down",
+        attrs: { "aria-hidden": "true" },
         on: {
           click: function ($event) {
             $event.preventDefault()
-            return _vm.dislikeBlog.apply(null, arguments)
+            return _vm.disLikePost.apply(null, arguments)
           },
         },
-      },
-      [
-        _c("i", {
-          staticClass: "fa fa-heart",
-          attrs: { "aria-hidden": "true" },
-        }),
-        _vm._v(" \n       (" + _vm._s(_vm.allDislike) + ")\n   "),
-      ]
-    ),
+      }),
+      _vm._v("(" + _vm._s(_vm.totalDislike) + ")"),
+    ]),
   ])
 }
 var staticRenderFns = []
@@ -28194,21 +28182,21 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _c("p", { attrs: { id: "success" } }),
     _vm._v(" "),
-    _c("a", [
+    _c("a", { attrs: { href: "http://" } }, [
       _c("i", {
-        staticClass: "fa fa-heart",
+        staticClass: "fa fa-thumbs-up",
         attrs: { "aria-hidden": "true" },
         on: {
           click: function ($event) {
             $event.preventDefault()
-            return _vm.disLikePost.apply(null, arguments)
+            return _vm.likePost.apply(null, arguments)
           },
         },
       }),
-      _vm._v("(" + _vm._s(_vm.totalDislike) + ")"),
+      _vm._v("(" + _vm._s(_vm.totallike) + ")"),
     ]),
   ])
 }
