@@ -87,3 +87,8 @@ hr {
     outline: 0;
     box-shadow: none
 }
+
+.cormonrant-garamond {
+    font-family: 'Cormorant Garamond', serif;
+    text-align: justify;
+}

@@ -5370,6 +5370,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['post'],
   data: function data() {
@@ -5418,6 +5423,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
 //
 //
 //
@@ -28144,18 +28153,23 @@ var render = function () {
   return _c("div", [
     _c("p", { attrs: { id: "success" } }),
     _vm._v(" "),
-    _c("a", { attrs: { href: "http://" } }, [
-      _c("i", {
-        staticClass: "fa fa-thumbs-down",
-        attrs: { "aria-hidden": "true" },
-        on: {
-          click: function ($event) {
-            $event.preventDefault()
-            return _vm.disLikePost.apply(null, arguments)
+    _c("span", [
+      _c("a", [
+        _c("i", {
+          staticClass: "fa fa-thumbs-down",
+          attrs: { "aria-hidden": "true" },
+          on: {
+            click: function ($event) {
+              $event.preventDefault()
+              return _vm.disLikePost.apply(null, arguments)
+            },
           },
-        },
-      }),
-      _vm._v("(" + _vm._s(_vm.totalDislike) + ")"),
+        }),
+      ]),
+      _vm._v(" "),
+      _c("small", [
+        _vm._v("\n       Vote down(" + _vm._s(_vm.totalDislike) + ")\n   "),
+      ]),
     ]),
   ])
 }
@@ -28185,9 +28199,9 @@ var render = function () {
   return _c("div", [
     _c("p", { attrs: { id: "success" } }),
     _vm._v(" "),
-    _c("a", { attrs: { href: "http://" } }, [
+    _c("span", [
       _c("i", {
-        staticClass: "fa fa-thumbs-up",
+        staticClass: "fa fa-heart",
         attrs: { "aria-hidden": "true" },
         on: {
           click: function ($event) {
@@ -28196,7 +28210,8 @@ var render = function () {
           },
         },
       }),
-      _vm._v("(" + _vm._s(_vm.totallike) + ")"),
+      _vm._v(" "),
+      _c("small", [_vm._v("Vote up(" + _vm._s(_vm.totallike) + ")")]),
     ]),
   ])
 }

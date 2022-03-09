@@ -23,8 +23,7 @@
 </head>
 <body>
     @include ('layouts.header')
-    <div id="testlike">
-    <like-component :post="1"></like-component>
+    <div>
         <main class="py-4">
             @yield('content')
         </main>

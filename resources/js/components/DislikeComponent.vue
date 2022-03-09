@@ -1,7 +1,12 @@
 <template>
     <div>
-        <p id="success"></p>
-       <a href="http://"><i @click.prevent="disLikePost" class="fa fa-thumbs-down" aria-hidden="true"></i>({{ totalDislike }})</a>
+    <p id="success"></p>
+    <span>
+        <a><i @click.prevent="disLikePost" class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+       <small>
+           Vote down({{ totalDislike }})
+       </small>
+    </span>
     </div>
 </template>
 <script>

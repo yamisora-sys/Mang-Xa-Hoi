@@ -1,7 +1,11 @@
 <template>
     <div>
         <p id="success"></p>
-       <a href="http://"><i @click.prevent="likePost" class="fa fa-thumbs-up" aria-hidden="true"></i>({{ totallike }})</a>
+        <span>
+           <i @click.prevent="likePost" class="fa fa-heart" aria-hidden="true"></i>
+           <small>Vote up({{ totallike }})</small>
+        </span>
+       
     </div> 
 </template>
 <script>
