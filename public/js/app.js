@@ -28157,6 +28157,7 @@ var render = function () {
       _c("a", [
         _c("i", {
           staticClass: "fa fa-thumbs-down",
+          staticStyle: { cursor: "pointer" },
           attrs: { "aria-hidden": "true" },
           on: {
             click: function ($event) {
@@ -28202,6 +28203,7 @@ var render = function () {
     _c("span", [
       _c("i", {
         staticClass: "fa fa-heart",
+        staticStyle: { cursor: "pointer" },
         attrs: { "aria-hidden": "true" },
         on: {
           click: function ($event) {

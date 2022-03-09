@@ -2,7 +2,7 @@
     <div>
     <p id="success"></p>
     <span>
-        <a><i @click.prevent="disLikePost" class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+        <a><i style="cursor:pointer" @click.prevent="disLikePost" class="fa fa-thumbs-down" aria-hidden="true"></i></a>
        <small>
            Vote down({{ totalDislike }})
        </small>

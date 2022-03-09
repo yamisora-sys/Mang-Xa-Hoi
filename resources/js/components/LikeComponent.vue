@@ -2,7 +2,7 @@
     <div>
         <p id="success"></p>
         <span>
-           <i @click.prevent="likePost" class="fa fa-heart" aria-hidden="true"></i>
+           <i style="cursor:pointer" @click.prevent="likePost" class="fa fa-heart" aria-hidden="true"></i>
            <small>Vote up({{ totallike }})</small>
         </span>
        

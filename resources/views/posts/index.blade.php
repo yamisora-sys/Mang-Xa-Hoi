@@ -3,7 +3,6 @@
 @section('content')
 
 <div id="index" >
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <div class="Welcome">
         <h1>Welcome to Void Forum</h1>
         <p>
