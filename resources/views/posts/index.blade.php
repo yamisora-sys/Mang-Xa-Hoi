@@ -24,7 +24,7 @@
                         <div class="text-muted small">{{date('d/m/y H:i', strtotime($post->created_at))}}</div>
                     </div>
                     <ul class="meta">
-                        <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By:{{$post->user->name}}</a></li>
+                        <li><a href="javascript:void(0);"><i class="zmdi zmdi-account col-blue"></i>Posted By: {{$post->user->name}}</a></li>
                         <li><a href="javascript:void(0);"><i class="zmdi zmdi-label col-amber"></i>{{$post->tag}}</a></li>
                         <li><a href="javascript:void(0);"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: {{$post->comments()->get()->count()}}</a></li>
                     </ul>

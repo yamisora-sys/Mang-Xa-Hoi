@@ -40,11 +40,15 @@ Route::prefix('facebook')->name('facebook.')->group( function(){
 });
 
 
-//like
+//like post
 
 Route::post('like', [App\Http\Controllers\PostController::class, 'getlike']);
 Route::post('like/{id}', [App\Http\Controllers\PostController::class, 'like']);
- 
 Route::post('dislike', [App\Http\Controllers\PostController::class, 'getDislike']);
 Route::post('dislike/{id}', [App\Http\Controllers\PostController::class, 'dislike']);
 
+//like comment
+Route::post('likecomment', [App\Http\Controllers\CommentsController::class, 'getlike']);
+Route::post('likecomment/{id}', [App\Http\Controllers\CommentsController::class, 'like']);
+Route::post('dislikecomment', [App\Http\Controllers\CommentsController::class, 'getDislike']);
+Route::post('dislikecomment/{id}', [App\Http\Controllers\CommentsController::class, 'dislike']);

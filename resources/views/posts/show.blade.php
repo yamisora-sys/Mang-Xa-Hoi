@@ -12,7 +12,7 @@
         
     </head>
     <body>
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5" id="testlike">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -25,17 +25,16 @@
                 <div class="p-2">
                     <p class="cormonrant-garamond">{{$post->body}}</p>
                     <hr>
-                    <div class="d-flex justify-content-between align-items-center" id="testlike">
+                    <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-row icons d-flex align-items-center">
                             <like-component :post="{{ $post->id }}"></like-component>
                             <dislike-component :post="{{ $post->id}}"></dislike-component>
-                            
                         </div>
                         <div class="d-flex flex-row muted-color"> <span>{{$post->comments()->get()->count()}} Comments</span> <span class="ml-2">Share</span> </div>
                     </div>
                     <hr>
                     <!-- commentPost & commentDisplay -->
-                    <div class="comments" >
+                    <div class="comments">
                         @guest
                             <div class="alert alert-danger">
                                 <strong>You must be logged in to comment!</strong>

@@ -1,17 +1,15 @@
 <template>
-    <div>
-    <p id="success"></p>
     <span>
-        <i style="cursor:pointer" @click.prevent="disLikePost" class="fa fa-thumbs-down" aria-hidden="true"></i>
+    <p id="success"></p>
+       <i style="cursor:pointer" @click.prevent="disLikePost" class="fa fa-chevron-down" aria-hidden="true"></i>
        <small>
-           Vote down({{ totalDislike }})
+           Down({{ totalDislike }})
        </small>
     </span>
-    </div>
 </template>
 <script>
     export default {
-        props:['post'],
+        props:['comment'],
         data(){
             return {
                 totalDislike:'',
@@ -19,7 +17,7 @@
         },
         methods:{
             disLikePost(){
-                axios.post('/dislike/'+this.post,{post:this.post})
+                axios.post('/dislikecomment/'+this.comment,{comment:this.comment})
                 .then(response =>{
                     this.getDislike()
                     $('#success').html(response.data.message)
@@ -27,10 +25,10 @@
                 .catch()
             },
             getDislike(){
-                axios.post('/dislike',{post:this.post})
+                axios.post('/dislikecomment',{comment:this.comment})
                 .then(response =>{
-                    console.log(response.data.post.dislike)
-                    this.totalDislike = response.data.post.dislike
+                    console.log(response.data.comment.dislike)
+                    this.totalDislike = response.data.comment.dislike
                 })
             }
         },

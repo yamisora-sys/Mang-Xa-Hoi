@@ -18,4 +18,41 @@ class CommentsController extends Controller
         Comment::create($input);
         return back();
     }
+
+    public function getlike(Request $request)
+    {
+        $comment = Comment::find($request->comment);
+        return response()->json([
+            'comment'=>$comment,
+        ]);
+    }
+    public function like(Request $request)
+    {
+        $comment = Comment::find($request->comment);
+        $value = $comment->like;
+        $comment->like = $value+1;
+        $comment->save();
+        return response()->json([
+            'message'=>'Thanks',
+        ]);
+    }    
+ 
+    public function getDislike(Request $request)
+    {
+        $comment = Comment::find($request->comment);
+        return response()->json([
+            'comment'=>$comment,
+        ]);
+    }
+ 
+    public function dislike(Request $request)
+    {
+        $comment = Comment::find($request->comment);
+        $value = $comment->dislike;
+        $comment->dislike = $value+1;
+        $comment->save();
+        return response()->json([
+            'message'=>'Thanks',
+        ]);
+    }
 }

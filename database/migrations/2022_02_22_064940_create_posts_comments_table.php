@@ -31,6 +31,8 @@ return new class extends Migration
             $table->integer('post_id')->unsigned();
             $table->integer('parent_id')->unsigned()->nullable();
             $table->text('body');
+            $table->unsignedBigInteger('like')->default(0);
+            $table->unsignedBigInteger('dislike')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

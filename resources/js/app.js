@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+// const { VueLoaderPlugin } = require('vue-loader');
+
 require('./bootstrap');
 
 window.Vue = require('vue').default;
@@ -16,12 +18,13 @@ window.Vue = require('vue').default;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('like-component', require('./components/LikeComponent.vue').default);
-Vue.component('dislike-component', require('./components/DislikeComponent.vue').default);
-
+// Vue.component('like-component', require('./components/LikeComponent.vue').default);
+// Vue.component('dislike-component', require('./components/DislikeComponent.vue').default);
+// Vue.component('likecmt-component', require('./components/LikecmtComponent.vue').default);
+// Vue.component('dislikecmt-component', require('./components/DislikecmtComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
