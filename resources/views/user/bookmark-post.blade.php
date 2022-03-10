@@ -7,13 +7,17 @@
     </head>
 
     <body>
+            <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">Your Bookmark</h5>
+        </div>
+        </div>
     <div class="container">
     <div class="row">
         <div class="col-md-8">
             <div class="people-nearby">
               <div class="nearby-user">
                 <div class="row">
-
                 @foreach($bookmarks as $bookmark)
                 <div class="col-md-2 col-sm-2">
                     <img src="https://png.pngtree.com/png-vector/20190423/ourmid/pngtree-bookmark-icon-vector-illustration-in-filled-style-for-any-purpose-png-image_975443.jpg" alt="user" class="profile-photo-lg">

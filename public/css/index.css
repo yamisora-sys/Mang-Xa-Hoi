@@ -224,3 +224,8 @@ body{
 .m-b-15 {
     margin-bottom: 15px;
 }
+
+.cormonrant-garamond {
+    font-family: 'Cormorant Garamond', serif;
+    text-align: justify;
+}

@@ -42,7 +42,7 @@
                                 </a>
                                 <a class="dropdown-item" href="{{route('view.bookmark')}}"
                                     onclick="enent.preventDefault"();>
-                                    {{__('Các bài viết đang theo dõi')}}
+                                    {{__('Bài viết đang theo dõi')}}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
