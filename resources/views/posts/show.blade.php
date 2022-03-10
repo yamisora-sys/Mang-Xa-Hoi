@@ -9,9 +9,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> -->
         <link rel="stylesheet" href="{{asset('css/show.css')}}"> 
-        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
     </head>
     <body>
+    
     <div class="container mt-5 mb-5" id="testlike">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6">
@@ -20,8 +22,18 @@
                     <div class="d-flex flex-row align-items-center"> <img src="https://play-lh.googleusercontent.com/ObdbSatQvNUymufVs3vL5YmhGdvs3w5vvTciaGLFQOZoREVAEIIueioFOrWk9je_fqxR" width="50" class="rounded-circle">
                         <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">{{$post->user->name}}</span> <small class="text-primary">{{$post->title}}</small> </div>
                     </div>
-                    <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">{{date('d/m/y H:i', strtotime($post->created_at))}}</small> <i class="fa fa-ellipsis-h"></i> </div>
-                </div> <img src="https://image.winudf.com/v2/image/Y29tLndDdXRlQ2F0V2FsbHBhcGVyXzUzMzYwNTJfc2NyZWVuXzBfNGYwNWF3aTM/screen-0.jpg?fakeurl=1&type=.jpg" class="img-fluid">
+                    <div class="d-flex flex-row mt-1 ellipsis">
+                        <small class="mr-2">{{date('d/m/y H:i', strtotime($post->created_at))}}</small>
+                        <!-- bookmark -->
+                        <form method="POST" action="{{route('bookmark')}}">
+                            @csrf
+                            <input type="hidden" name=post_id value="{{$post->id}}">
+                            <button type="submit" class="btn btn-link text-primary">
+                                <i @if($post->bookmark()==true) class= "fas fa-bookmark" @else class= "far fa-bookmark" @endif></i>
+                            </button>
+                        </form>
+                </div>
+                </div> <img src="{{$post->image}}" class="img-fluid">
                 <div class="p-2">
                     <p class="cormonrant-garamond">{{$post->body}}</p>
                     <hr>
@@ -30,7 +42,7 @@
                             <like-component :post="{{ $post->id }}"></like-component>
                             <dislike-component :post="{{ $post->id}}"></dislike-component>
                         </div>
-                        <div class="d-flex flex-row muted-color"> <span>{{$post->comments()->get()->count()}} Comments</span> <span class="ml-2">Share</span> </div>
+                        <div class="d-flex flex-row muted-color"> <span>{{$post->allcmt()->get()->count()}} Comments</span> <span class="ml-2">Share</span> </div>
                     </div>
                     <hr>
                     <!-- commentPost & commentDisplay -->
@@ -41,7 +53,7 @@
                             </div>
                         @else
                         @include('posts.commentDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
-                        <form method="post" action="{{ route('comment.store') }}">
+                        <form method="POST" action="{{ route('comment.store') }}">
                             @csrf
                             <div class="form-group">
                                 <div class="comment-input"> 

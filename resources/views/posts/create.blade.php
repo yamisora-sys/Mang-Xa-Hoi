@@ -17,7 +17,10 @@
                             <label class="label">Tag: </label>
                             <input name=tag class="form-control" value="{{old('tag')}}" placeholder="Tối đa 15 ký tự" required/>
                         </div>
-
+                        <div class="form-group">
+                            <label class="label">Image url: </label>
+                            <input name=image class="form-control" placeholder="nhập link hình ảnh"/>
+                        </div>
                         <div class="form-group">
                             <label class="label">Body: </label>
                             <textarea name=body rows="10" cols="30" class="form-control" placeholder="Nhập nội dung bài đăng" required>{{ old('body') }}</textarea>

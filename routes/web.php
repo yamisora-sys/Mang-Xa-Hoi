@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,15 +27,15 @@ Auth::routes();
 Route::get('/home', function(){
     return redirect()->route('index');
 });
-Route::get('/forum', [App\Http\Controllers\PostController::class, 'index'])->name('index');
+Route::get('/forum', [PostController::class, 'index'])->name('index');
 
-Route::get('/newpost', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
+Route::get('/newpost', [PostController::class, 'create'])->name('post.create');
 
-Route::post('/store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
+Route::post('/store', [PostController::class, 'store'])->name('post.store');
 
-Route::get('/viewpost/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
+Route::get('/viewpost/{post}', [PostController::class, 'show'])->name('post.show');
 
-Route::post('/postcomment', [App\Http\Controllers\CommentsController::class, 'store'])->name('comment.store');
+Route::post('/postcomment', [CommentsController::class, 'store'])->name('comment.store');
 
 //facebook login
 Route::prefix('facebook')->name('facebook.')->group( function(){
@@ -42,13 +46,17 @@ Route::prefix('facebook')->name('facebook.')->group( function(){
 
 //like post
 
-Route::post('like', [App\Http\Controllers\PostController::class, 'getlike']);
-Route::post('like/{id}', [App\Http\Controllers\PostController::class, 'like']);
-Route::post('dislike', [App\Http\Controllers\PostController::class, 'getDislike']);
-Route::post('dislike/{id}', [App\Http\Controllers\PostController::class, 'dislike']);
+Route::post('like', [PostController::class, 'getlike']);
+Route::post('like/{id}', [PostController::class, 'like']);
+Route::post('dislike', [PostController::class, 'getDislike']);
+Route::post('dislike/{id}', [PostController::class, 'dislike']);
 
 //like comment
-Route::post('likecomment', [App\Http\Controllers\CommentsController::class, 'getlike']);
-Route::post('likecomment/{id}', [App\Http\Controllers\CommentsController::class, 'like']);
-Route::post('dislikecomment', [App\Http\Controllers\CommentsController::class, 'getDislike']);
-Route::post('dislikecomment/{id}', [App\Http\Controllers\CommentsController::class, 'dislike']);
+Route::post('likecomment', [CommentsController::class, 'getlike']);
+Route::post('likecomment/{id}', [CommentsController::class, 'like']);
+Route::post('dislikecomment', [CommentsController::class, 'getDislike']);
+Route::post('dislikecomment/{id}', [CommentsController::class, 'dislike']);
+
+Route::post('/storecomment', [CommentsController::class, 'store'])->name('comment.store');
+
+Route::post('/bookmark', [BookmarkController::class, 'bookmark'])->name('bookmark');

@@ -33,7 +33,9 @@ class PostController extends Controller
             'tag'=>'required|max:15',
             'body'=>'required',
         ]);
+        
         $input = $request->all();
+        
         $input['user_id'] = auth()->user()->id;
     
         Post::create($input);

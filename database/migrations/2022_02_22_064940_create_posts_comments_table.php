@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('body');
             $table->unsignedBigInteger('like')->default(0);
             $table->unsignedBigInteger('dislike')->default(0);
+            $table->text('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
