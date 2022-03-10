@@ -7,7 +7,7 @@
     </head>
 
     <body>
-            <div class="card text-center">
+      <div class="card text-center">
         <div class="card-body">
             <h5 class="card-title">Your Bookmark</h5>
         </div>
@@ -17,8 +17,8 @@
         <div class="col-md-8">
             <div class="people-nearby">
               <div class="nearby-user">
+              @foreach($bookmarks as $bookmark)
                 <div class="row">
-                @foreach($bookmarks as $bookmark)
                 <div class="col-md-2 col-sm-2">
                     <img src="https://png.pngtree.com/png-vector/20190423/ourmid/pngtree-bookmark-icon-vector-illustration-in-filled-style-for-any-purpose-png-image_975443.jpg" alt="user" class="profile-photo-lg">
                   </div>
@@ -31,9 +31,8 @@
                     <button class="btn btn-primary pull-right" action="">View Post</button>
                   </div> -->
                 </div>
-                @endforeach
-
               </div>
+              @endforeach
             </div>
     	</div>
 	</div>
