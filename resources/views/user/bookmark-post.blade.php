@@ -27,9 +27,13 @@
                     <p>Author: {{$bookmark->user->name}}</p>
                     <p class="text-muted">{{date('d/m/y H:i', strtotime($bookmark->post->created_at))}}</p>
                   </div>
-                  <!-- <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right" action="">View Post</button>
-                  </div> -->
+                    <form method="POST" action="{{route('deleteBookmark')}}">
+                    @csrf
+                    <input type="hidden" name=post_id value="{{$bookmark->post_id}}">
+                    <div class="col-md-3 col-sm-3">
+                      <button class="btn btn-primary pull-right"><i class="fas fa-trash"></i></button>
+                    </div>
+                    </form>
                 </div>
               </div>
               @endforeach

@@ -44,4 +44,11 @@ class BookmarkController extends Controller
         $bookmark = Bookmark::where('user_id', auth()->user()->id)->where('post_id', $request->post_id)->first();
         $bookmark->delete();
     }
+
+    public function deleteBookmark(Request $request)
+    {
+        $bookmark = Bookmark::where('user_id', auth()->user()->id)->where('post_id', $request->post_id)->first();
+        $bookmark->delete();
+        return back();
+    }
 }
