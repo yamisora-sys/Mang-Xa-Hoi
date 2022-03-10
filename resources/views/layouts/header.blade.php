@@ -40,9 +40,13 @@
                                     onclick="enent.preventDefault"();>
                                     {{__('Tạo Bài Viết Mới')}}
                                 </a>
+                                <a class="dropdown-item" href="{{route('view.bookmark')}}"
+                                    onclick="enent.preventDefault"();>
+                                    {{__('Các bài viết đang theo dõi')}}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
                                         {{ __('Đăng Xuất') }}
                                 </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

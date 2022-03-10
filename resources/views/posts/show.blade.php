@@ -12,8 +12,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
     </head>
-    <body>
-    
+<body>
     <div class="container mt-5 mb-5" id="testlike">
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-6">
@@ -29,6 +28,7 @@
                             @csrf
                             <input type="hidden" name=post_id value="{{$post->id}}">
                             <button type="submit" class="btn btn-link text-primary">
+                            
                                 <i @if($post->bookmark()==true) class= "fas fa-bookmark" @else class= "far fa-bookmark" @endif></i>
                             </button>
                         </form>

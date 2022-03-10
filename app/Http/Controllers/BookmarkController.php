@@ -10,7 +10,8 @@ class BookmarkController extends Controller
 {
     public function index()
     {
-        return view('bookmark.index', compact('bookmarks'));
+        $bookmarks = Bookmark::where('user_id', auth()->user()->id)->get();
+        return view('user.bookmark-post', ['bookmarks' => $bookmarks]);
     }
 
     public function bookmark(Request $request)

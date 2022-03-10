@@ -18,5 +18,13 @@ class Bookmark extends Model
     public function post(){
         return $this->belongsTo(Post::class, 'post_id');
     }
-    
+
+    public function bookmarkEmpty(Request $request) : bool
+    {
+        $bookmark = Bookmark::where('user_id', auth()->user()->id);
+        if($bookmark){
+            return true;
+        }
+        return false;
+    }
 }

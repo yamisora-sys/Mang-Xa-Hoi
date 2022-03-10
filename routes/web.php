@@ -58,5 +58,6 @@ Route::post('dislikecomment', [CommentsController::class, 'getDislike']);
 Route::post('dislikecomment/{id}', [CommentsController::class, 'dislike']);
 
 Route::post('/storecomment', [CommentsController::class, 'store'])->name('comment.store');
-
+//bookmark
 Route::post('/bookmark', [BookmarkController::class, 'bookmark'])->name('bookmark');
+Route::get('/view-my-bookmark', [BookmarkController::class, 'index'])->name('view.bookmark');
