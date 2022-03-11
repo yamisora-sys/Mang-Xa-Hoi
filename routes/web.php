@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,3 +63,8 @@ Route::post('/storecomment', [CommentsController::class, 'store'])->name('commen
 Route::post('/bookmark', [BookmarkController::class, 'bookmark'])->name('bookmark');
 Route::post('/deleteBookmark', [BookmarkController::class, 'deleteBookmark'])->name('deleteBookmark');
 Route::get('/view-my-bookmark', [BookmarkController::class, 'index'])->name('view.bookmark');
+
+//tag
+Route::get('/tag', [TagController::class, 'index'])->name('tag.index');
+Route::post('/addtag', [TagController::class, 'addTag'])->name('tag.add');
+Route::post('/deletetag', [TagController::class, 'deleteTag'])->name('tag.delete');

@@ -28,7 +28,9 @@ class Post extends Model
     public function allcmt(){
         return $this->hasMany(Comment::class);
     }
-
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
     public function bookmark(){
         $bookmark = Bookmark::where('user_id', auth()->user()->id)->where('post_id', $this->id)->first();
         if($bookmark){
