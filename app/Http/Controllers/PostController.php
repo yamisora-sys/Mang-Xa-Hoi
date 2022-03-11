@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 //Model
 use App\Models\Post;
 use App\Models\Comment;
-
+use App\Models\User;
+use App\Models\Tag;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -23,14 +24,16 @@ class PostController extends Controller
     }
     //completed
     public function create(){
-        return view('posts.create');
+        return view('posts.create', [
+            'tags' => Tag::all(),
+        ]);
     }
     // completed
     public function store(Request $request){
     
         $request->validate([
             'title'=>'required',
-            'tag'=>'required|max:15',
+            'tag'=>'required',
             'body'=>'required',
         ]);
         

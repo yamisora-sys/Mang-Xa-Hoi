@@ -44,6 +44,10 @@
                                     onclick="enent.preventDefault"();>
                                     {{__('Bài viết đang theo dõi')}}
                                 </a>
+                                <a class="dropdown-item" href="{{route('tag.index')}}"
+                                    onclick="enent.preventDefault"();>
+                                    {{__('Quản lí tag')}}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
