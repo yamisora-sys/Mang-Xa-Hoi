@@ -24,6 +24,8 @@
                     <div class="d-flex flex-row mt-1 ellipsis">
                         <small class="mr-2">{{date('d/m/y H:i', strtotime($post->created_at))}}</small>
                         <!-- bookmark -->
+                        @guest
+                        @else
                         <form method="POST" action="{{route('bookmark')}}">
                             @csrf
                             <input type="hidden" name=post_id value="{{$post->id}}">
@@ -32,6 +34,7 @@
                                 <i @if($post->bookmark()==true) class= "fas fa-bookmark" @else class= "far fa-bookmark" @endif></i>
                             </button>
                         </form>
+                        @endguest
                 </div>
                 </div> <img src="{{$post->image}}" class="img-fluid">
                 <div class="p-2">
